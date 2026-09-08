@@ -1,0 +1,14 @@
+LOGO OFICIAL DE SUBSUELO STUDIO
+================================
+
+Guardá acá los archivos del logo con estos nombres exactos:
+
+  subsuelo-mark.svg    -> solo el isotipo (la "S" dorada). SVG preferido, si no PNG con fondo transparente.
+  subsuelo-mark.png    -> alternativa al SVG (mínimo 512x512, fondo transparente)
+
+Apenas exista alguno de esos archivos, el sitio lo muestra automáticamente
+en el header y en el footer, junto al lockup tipográfico. No hay que tocar código.
+
+Para el favicon y la imagen de redes:
+  app/icon.svg          -> ícono de la pestaña del navegador
+  app/opengraph-image.*  -> imagen al compartir el link (1200x630)

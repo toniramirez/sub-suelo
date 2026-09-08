@@ -1,0 +1,222 @@
+@import "tailwindcss";
+
+/* ==========================================================================
+   SUBSUELO STUDIO — Design tokens
+   El amarillo de marca se cambia en una sola línea: --color-brand
+   ========================================================================== */
+@theme {
+  --color-ink: #000000;
+  --color-void: #080808;
+  --color-coal: #101010;
+  --color-ash: #1a1a1a;
+  /* Amarillo de marca tomado del logo (degradado dorado) */
+  --color-brand: #ffc91c;
+  --color-brand-hi: #ffe45c;
+  --color-brand-lo: #f0a81e;
+  --color-bone: #f2f0ec;
+
+  --font-display: var(--font-archivo), "Helvetica Neue", Arial, sans-serif;
+  --font-sans: var(--font-inter-tight), "Helvetica Neue", Arial, sans-serif;
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 88px;
+    background-color: var(--color-ink);
+  }
+
+  body {
+    background-color: var(--color-ink);
+    color: #ffffff;
+    font-family: var(--font-sans);
+    font-feature-settings: "ss01", "cv01";
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+    overflow-x: hidden;
+  }
+
+  ::selection {
+    background: var(--color-brand);
+    color: #000000;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 3px;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-display);
+    font-weight: 700;
+    letter-spacing: -0.035em;
+    line-height: 0.92;
+    text-wrap: balance;
+  }
+}
+
+@layer components {
+  /* Gutters editoriales consistentes en todo el sitio */
+  .shell {
+    width: 100%;
+    margin-inline: auto;
+    padding-inline: clamp(1.25rem, 4.5vw, 5rem);
+    max-width: 1800px;
+  }
+
+  /* Etiqueta pequeña, mayúsculas, tracking amplio */
+  .eyebrow {
+    font-size: 0.6875rem;
+    line-height: 1;
+    letter-spacing: 0.22em;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  .rule {
+    height: 1px;
+    width: 100%;
+    background: rgba(255, 255, 255, 0.14);
+  }
+
+  /* Titulares de escala editorial */
+  .display {
+    font-family: var(--font-display);
+    font-weight: 800;
+    letter-spacing: -0.04em;
+    line-height: 0.88;
+    text-transform: uppercase;
+  }
+}
+
+@layer utilities {
+  .text-dim {
+    color: rgba(255, 255, 255, 0.56);
+  }
+  .text-dimmer {
+    color: rgba(255, 255, 255, 0.38);
+  }
+  .border-hair {
+    border-color: rgba(255, 255, 255, 0.12);
+  }
+
+  /* Grano cinematográfico global */
+  .grain::after {
+    content: "";
+    position: fixed;
+    inset: -50%;
+    z-index: 60;
+    pointer-events: none;
+    opacity: 0.035;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)'/%3E%3C/svg%3E");
+  }
+}
+
+@layer utilities {
+  /* Degradado dorado del logo — para el mark, filetes y detalles clave */
+  .brand-gradient {
+    background-image: linear-gradient(
+      135deg,
+      var(--color-brand-lo) 0%,
+      var(--color-brand) 45%,
+      var(--color-brand-hi) 100%
+    );
+  }
+  .brand-text-gradient {
+    background-image: linear-gradient(
+      135deg,
+      var(--color-brand-lo) 0%,
+      var(--color-brand) 45%,
+      var(--color-brand-hi) 100%
+    );
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+  }
+  /* Esquina biselada: eco de la geometría angular del isotipo */
+  .bevel {
+    clip-path: polygon(0 0, calc(100% - 14px) 0, 100% 14px, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+  }
+  .bevel-sm {
+    clip-path: polygon(0 0, calc(100% - 8px) 0, 100% 8px, 100% 100%, 8px 100%, 0 calc(100% - 8px));
+  }
+}
+
+/* ==========================================================================
+   Animaciones — sobrias, cinematográficas, nunca decorativas
+   ========================================================================== */
+
+/* Reveal on scroll (IntersectionObserver agrega [data-visible]) */
+[data-reveal] {
+  opacity: 0;
+  transform: translate3d(0, 28px, 0);
+  transition:
+    opacity 1s var(--ease-out-expo),
+    transform 1.15s var(--ease-out-expo);
+  transition-delay: var(--reveal-delay, 0ms);
+  will-change: opacity, transform;
+}
+[data-reveal="mask"] {
+  transform: none;
+  clip-path: inset(0 0 100% 0);
+  transition:
+    opacity 0.6s linear,
+    clip-path 1.25s var(--ease-out-expo);
+}
+[data-reveal="scale"] {
+  transform: scale(1.06);
+}
+[data-reveal="line"] {
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition:
+    opacity 0.4s linear,
+    transform 1.4s var(--ease-out-expo);
+}
+[data-reveal="line"][data-visible="true"] {
+  transform: scaleX(1);
+}
+[data-reveal][data-visible="true"] {
+  opacity: 1;
+  transform: none;
+  clip-path: inset(0 0 0 0);
+}
+
+/* Marquee horizontal */
+@keyframes subsuelo-marquee {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
+  to {
+    transform: translate3d(-50%, 0, 0);
+  }
+}
+.marquee-track {
+  display: flex;
+  width: max-content;
+  animation: subsuelo-marquee var(--marquee-duration, 44s) linear infinite;
+}
+.marquee-track[data-direction="reverse"] {
+  animation-direction: reverse;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  [data-reveal] {
+    opacity: 1 !important;
+    transform: none !important;
+    clip-path: none !important;
+    transition: none !important;
+  }
+  .marquee-track {
+    animation: none;
+  }
+}
