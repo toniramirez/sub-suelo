@@ -28,7 +28,7 @@ export default function Cta({
   const styles =
     variant === "solid"
       ? "brand-gradient bevel-sm text-black hover:brightness-110"
-      : "bevel-sm border border-white/25 text-white hover:border-brand hover:text-brand";
+      : "border border-white/25 text-white hover:border-brand hover:text-brand";
 
   return (
     <Link href={href} className={`${base} ${styles} ${className}`}>
