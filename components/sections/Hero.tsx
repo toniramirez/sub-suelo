@@ -80,12 +80,7 @@ export default function Hero() {
       </div>
 
       <div className="border-t border-hair py-5">
-        <Marquee
-          items={hero.ticker}
-          duration={52}
-          className="eyebrow text-white/45"
-          separator="/"
-        />
+        <Marquee items={hero.ticker} duration={52} className="eyebrow text-white/45" />
       </div>
     </section>
   );

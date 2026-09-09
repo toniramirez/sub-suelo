@@ -1,4 +1,5 @@
 import Link from "next/link";
+import { ArrowUpRight } from "@/components/ui/icons";
 import { CTA } from "@/content/site";
 
 type Props = {
@@ -33,12 +34,7 @@ export default function Cta({
   return (
     <Link href={href} className={`${base} ${styles} ${className}`}>
       <span>{label}</span>
-      <span
-        aria-hidden="true"
-        className="transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-1"
-      >
-        ↗
-      </span>
+      <ArrowUpRight className="text-[1.15em] transition-transform duration-500 ease-[cubic-bezier(0.16,1,0.3,1)] group-hover:translate-x-[3px] group-hover:-translate-y-[3px]" />
     </Link>
   );
 }

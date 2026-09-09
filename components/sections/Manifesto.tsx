@@ -1,3 +1,4 @@
+import { Separator } from "@/components/ui/icons";
 import { manifesto, statements } from "@/content/copy";
 
 export default function Manifesto() {
@@ -70,7 +71,7 @@ function Statement() {
       {[...items, ...items].map((text, i) => (
         <span key={i} className="flex shrink-0 items-center whitespace-nowrap">
           <span className="px-8">{text}</span>
-          <span className="text-brand/50">◆</span>
+          <Separator className="text-[0.5em] text-brand/50" />
         </span>
       ))}
     </div>

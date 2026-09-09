@@ -1,4 +1,5 @@
 import Frame from "@/components/ui/Frame";
+import { ArrowUpRight } from "@/components/ui/icons";
 import { team } from "@/content/team";
 
 export default function Team() {
@@ -64,10 +65,11 @@ export default function Team() {
                 href={founder.instagram}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="eyebrow mt-8 inline-flex items-center gap-2 text-white/70 transition-colors hover:text-brand"
+                className="group/link eyebrow mt-8 inline-flex items-center gap-2 text-white/70 transition-colors hover:text-brand"
                 data-reveal
               >
-                Instagram ↗
+                Instagram
+                <ArrowUpRight className="text-[1.2em] transition-transform duration-500 group-hover/link:translate-x-[2px] group-hover/link:-translate-y-[2px]" />
               </a>
             ) : null}
           </div>
@@ -100,9 +102,10 @@ export default function Team() {
                   href={member.instagram}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="eyebrow mt-4 inline-block text-[10px] text-white/60 hover:text-brand"
+                  className="group/link eyebrow mt-4 inline-flex items-center gap-1.5 text-[10px] text-white/60 hover:text-brand"
                 >
-                  Instagram ↗
+                  Instagram
+                  <ArrowUpRight className="text-[1.2em] transition-transform duration-500 group-hover/link:translate-x-[2px] group-hover/link:-translate-y-[2px]" />
                 </a>
               ) : null}
             </article>

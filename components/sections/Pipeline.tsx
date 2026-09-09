@@ -1,4 +1,5 @@
 import Cta from "@/components/ui/Cta";
+import { ChevronRight } from "@/components/ui/icons";
 import { pipeline } from "@/content/copy";
 
 export default function Pipeline() {
@@ -62,12 +63,7 @@ export default function Pipeline() {
                   <span className="font-display text-[11px] tracking-[0.2em] text-brand">
                     {step.index}
                   </span>
-                  <span
-                    aria-hidden="true"
-                    className="text-[10px] text-white/25 transition-all duration-500 group-hover:translate-x-1 group-hover:text-brand"
-                  >
-                    ▸
-                  </span>
+                  <ChevronRight className="text-[11px] text-white/25 transition-all duration-500 group-hover:translate-x-1 group-hover:text-brand" />
                 </div>
 
                 <h3 className="display mt-6 hyphens-auto break-words text-[clamp(1.15rem,1.35vw,1.55rem)] transition-colors duration-500 group-hover:text-brand">

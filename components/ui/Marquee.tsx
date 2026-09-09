@@ -1,9 +1,12 @@
+import { Separator } from "@/components/ui/icons";
+
 type Props = {
   items: readonly string[];
   duration?: number;
   reverse?: boolean;
   className?: string;
-  separator?: string;
+  /** Elemento que separa cada item. Por defecto, el doble chevron de marca. */
+  separator?: React.ReactNode;
 };
 
 /** Cinta horizontal en movimiento continuo. CSS puro, sin JS. */
@@ -12,7 +15,7 @@ export default function Marquee({
   duration = 44,
   reverse = false,
   className = "",
-  separator = "—",
+  separator = <Separator className="text-[0.9em] text-brand" />,
 }: Props) {
   const row = [...items, ...items];
 
@@ -26,7 +29,7 @@ export default function Marquee({
         {row.map((item, i) => (
           <span key={`${item}-${i}`} className="flex shrink-0 items-center whitespace-nowrap">
             <span className="px-6">{item}</span>
-            <span className="text-brand">{separator}</span>
+            <span className="flex items-center text-brand">{separator}</span>
           </span>
         ))}
       </div>

@@ -1,4 +1,5 @@
 import Frame from "@/components/ui/Frame";
+import { ArrowUpRight } from "@/components/ui/icons";
 import { statements } from "@/content/copy";
 import { works } from "@/content/work";
 
@@ -73,9 +74,10 @@ export default function Work() {
                       href={work.spotify}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="eyebrow text-[10px] text-white/70 hover:text-brand"
+                      className="group/link eyebrow inline-flex items-center gap-1.5 text-[10px] text-white/70 hover:text-brand"
                     >
-                      Spotify ↗
+                      Spotify
+                      <ArrowUpRight className="text-[1.2em] transition-transform duration-500 group-hover/link:translate-x-[2px] group-hover/link:-translate-y-[2px]" />
                     </a>
                   ) : null}
                   {work.youtube ? (
@@ -83,9 +85,10 @@ export default function Work() {
                       href={work.youtube}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="eyebrow text-[10px] text-white/70 hover:text-brand"
+                      className="group/link eyebrow inline-flex items-center gap-1.5 text-[10px] text-white/70 hover:text-brand"
                     >
-                      YouTube ↗
+                      YouTube
+                      <ArrowUpRight className="text-[1.2em] transition-transform duration-500 group-hover/link:translate-x-[2px] group-hover/link:-translate-y-[2px]" />
                     </a>
                   ) : null}
                 </div>

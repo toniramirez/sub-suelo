@@ -1,4 +1,5 @@
 import Cta from "@/components/ui/Cta";
+import { ChevronRight } from "@/components/ui/icons";
 import Frame from "@/components/ui/Frame";
 import { services, servicesIntro } from "@/content/services";
 
@@ -100,9 +101,7 @@ export default function Services() {
                         key={item}
                         className="flex items-center gap-3 border-b border-hair py-3 text-[13px] text-white/70"
                       >
-                        <span aria-hidden="true" className="text-[9px] text-brand">
-                          ▸
-                        </span>
+                        <ChevronRight className="shrink-0 text-[10px] text-brand" />
                         {item}
                       </li>
                     ))}

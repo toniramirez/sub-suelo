@@ -8,12 +8,7 @@ export default function Footer() {
   return (
     <footer className="relative border-t border-hair bg-ink">
       <div className="overflow-hidden border-b border-hair py-5">
-        <Marquee
-          items={statements.marquee}
-          duration={38}
-          className="eyebrow text-white/35"
-          separator="◆"
-        />
+        <Marquee items={statements.marquee} duration={38} className="eyebrow text-white/35" />
       </div>
 
       <div className="shell grid grid-cols-1 gap-x-10 gap-y-12 py-16 md:grid-cols-12 md:py-20">

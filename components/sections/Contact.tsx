@@ -1,4 +1,5 @@
 import ContactForm from "@/components/sections/ContactForm";
+import { ArrowUpRight } from "@/components/ui/icons";
 import { contact } from "@/content/copy";
 import { site, whatsappLink } from "@/content/site";
 
@@ -40,9 +41,7 @@ export default function Contact() {
                     className="group flex items-center justify-between border-b border-hair pb-4 font-display text-[18px] uppercase tracking-[-0.01em] transition-colors hover:text-brand"
                   >
                     WhatsApp
-                    <span className="text-[12px] transition-transform duration-500 group-hover:translate-x-1">
-                      ↗
-                    </span>
+                    <ArrowUpRight className="text-[14px] transition-transform duration-500 group-hover:translate-x-[3px] group-hover:-translate-y-[3px]" />
                   </a>
                 ) : (
                   <span className="flex items-center justify-between border-b border-hair pb-4 font-display text-[18px] uppercase tracking-[-0.01em] text-white/30">

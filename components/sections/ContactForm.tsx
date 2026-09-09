@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { ChevronDown } from "@/components/ui/icons";
 import { contact } from "@/content/copy";
 import { CTA } from "@/content/site";
 
@@ -212,12 +213,7 @@ function Select({
             </option>
           ))}
         </select>
-        <span
-          aria-hidden="true"
-          className="pointer-events-none absolute bottom-3 right-1 text-[10px] text-brand"
-        >
-          ▾
-        </span>
+        <ChevronDown className="pointer-events-none absolute bottom-[14px] right-1 text-[12px] text-brand" />
       </div>
     </div>
   );

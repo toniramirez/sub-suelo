@@ -1,3 +1,4 @@
+import { ChevronRight } from "@/components/ui/icons";
 import type { Media } from "@/lib/types";
 
 type Props = {
@@ -67,10 +68,8 @@ export default function Frame({
       ) : null}
 
       {!media.src && caption ? (
-        <span className="pointer-events-none absolute bottom-4 left-4 right-10 flex items-center gap-2 eyebrow text-[10px] text-white/45">
-          <span aria-hidden="true" className="text-[8px] text-brand">
-            ▸
-          </span>
+        <span className="pointer-events-none absolute bottom-4 left-4 right-10 flex items-start gap-2 eyebrow text-[10px] text-white/45">
+          <ChevronRight className="mt-[0.15em] shrink-0 text-[9px] text-brand" />
           {media.alt}
         </span>
       ) : null}

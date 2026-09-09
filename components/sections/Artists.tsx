@@ -1,4 +1,5 @@
 import Frame from "@/components/ui/Frame";
+import { ArrowUpRight } from "@/components/ui/icons";
 import { artists } from "@/content/artists";
 
 export default function Artists() {
@@ -92,12 +93,7 @@ function ListenLink({ href, label }: { href: string; label: string }) {
       className="group/link eyebrow inline-flex items-center gap-2 text-[10px] text-white/70 transition-colors hover:text-brand"
     >
       {label}
-      <span
-        aria-hidden="true"
-        className="transition-transform duration-500 group-hover/link:translate-x-1"
-      >
-        ↗
-      </span>
+      <ArrowUpRight className="text-[1.2em] transition-transform duration-500 group-hover/link:translate-x-[2px] group-hover/link:-translate-y-[2px]" />
     </a>
   );
 }
