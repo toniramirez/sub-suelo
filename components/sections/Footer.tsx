@@ -18,7 +18,7 @@ export default function Footer() {
 
       <div className="shell grid grid-cols-1 gap-x-10 gap-y-12 py-16 md:grid-cols-12 md:py-20">
         <div className="md:col-span-5">
-          <Logo size="lg" />
+          <Logo size="lg" variant="stacked" />
           <p className="mt-8 max-w-xs font-display text-[15px] uppercase leading-snug tracking-[-0.01em] text-white/75 md:text-[17px]">
             {site.claim}
           </p>

@@ -3,25 +3,24 @@ import path from "node:path";
 import { site } from "@/content/site";
 
 /**
- * Logo de Subsuelo.
- * Si existe un archivo del isotipo en /public/brand (svg > png > webp) lo usa.
- * Mientras tanto muestra el lockup tipográfico, alineado a la estética del logo.
+ * Logo de Subsuelo Studio.
  *
- * Para activar el logo oficial: guardá el archivo como
- *   public/brand/subsuelo-mark.svg   (recomendado, solo la "S")
- *   public/brand/subsuelo-mark.png
+ * Lee automáticamente los archivos de /public/brand:
+ *   subsuelo-mark.(svg|png|webp)  -> isotipo (la "S" dorada), se usa en el header
+ *   subsuelo-logo.(svg|png|webp)  -> lockup completo (S + SUBSUELO STUDIO), se usa en el footer
+ *
+ * Mientras no existan, muestra el lockup tipográfico. No hay que tocar código:
+ * apenas aparecen los archivos, el sitio los usa.
  */
-const CANDIDATES = [
-  "subsuelo-mark.svg",
-  "subsuelo-mark.png",
-  "subsuelo-mark.webp",
-] as const;
+const BRAND_DIR = path.join(process.cwd(), "public", "brand");
+const EXTENSIONS = ["svg", "png", "webp"] as const;
 
-function findMark(): string | null {
+function findAsset(basename: string): string | null {
   try {
-    const dir = path.join(process.cwd(), "public", "brand");
-    for (const file of CANDIDATES) {
-      if (fs.existsSync(path.join(dir, file))) return `/brand/${file}`;
+    for (const ext of EXTENSIONS) {
+      if (fs.existsSync(path.join(BRAND_DIR, `${basename}.${ext}`))) {
+        return `/brand/${basename}.${ext}`;
+      }
     }
   } catch {
     /* noop */
@@ -29,29 +28,38 @@ function findMark(): string | null {
   return null;
 }
 
-export default function Logo({
-  className = "",
-  size = "md",
-}: {
+type Props = {
   className?: string;
   size?: "sm" | "md" | "lg";
-}) {
-  const mark = findMark();
-  const markSize = size === "lg" ? "h-11" : size === "sm" ? "h-6" : "h-8";
-  const wordSize =
-    size === "lg" ? "text-[22px]" : size === "sm" ? "text-[13px]" : "text-[16px]";
+  /** "inline" = isotipo + palabra al lado (header). "stacked" = lockup completo (footer). */
+  variant?: "inline" | "stacked";
+};
+
+export default function Logo({ className = "", size = "md", variant = "inline" }: Props) {
+  const mark = findAsset("subsuelo-mark");
+  const lockup = findAsset("subsuelo-logo");
+
+  // Footer: si está el lockup completo, se usa tal cual.
+  if (variant === "stacked" && lockup) {
+    return (
+      // eslint-disable-next-line @next/next/no-img-element
+      <img
+        src={lockup}
+        alt={`${site.name} — ${site.claim}`}
+        className={`h-auto w-[190px] md:w-[220px] ${className}`}
+      />
+    );
+  }
+
+  const markSize = size === "lg" ? "h-12" : size === "sm" ? "h-7" : "h-9";
+  const wordSize = size === "lg" ? "text-[22px]" : size === "sm" ? "text-[13px]" : "text-[16px]";
   const subSize = size === "lg" ? "text-[11px]" : "text-[9px]";
 
   return (
     <span className={`flex items-center gap-3 ${className}`}>
       {mark ? (
         // eslint-disable-next-line @next/next/no-img-element
-        <img
-          src={mark}
-          alt=""
-          aria-hidden="true"
-          className={`${markSize} w-auto shrink-0`}
-        />
+        <img src={mark} alt="" aria-hidden="true" className={`${markSize} w-auto shrink-0`} />
       ) : null}
 
       <span className="flex flex-col leading-none">
