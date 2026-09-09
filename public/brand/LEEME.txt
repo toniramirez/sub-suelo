@@ -1,21 +1,25 @@
 LOGO OFICIAL DE SUBSUELO STUDIO
 ================================
 
-Guardá acá los archivos con estos nombres EXACTOS:
+Archivos en uso:
 
-  subsuelo-mark.svg    -> solo el isotipo (la "S" dorada). Va en el header.
-  subsuelo-logo.svg    -> lockup completo (S + SUBSUELO STUDIO). Va en el footer.
+  subsuelo-mark.png    -> isotipo (la "S" dorada). Se usa en el header.
+  subsuelo-logo.png    -> lockup completo (S + SUBSUELO STUDIO). Se usa en el footer.
 
-Formatos aceptados, en orden de preferencia: .svg > .png > .webp
-Si usás PNG: fondo TRANSPARENTE, mínimo 512px de alto (el mark) / 1000px de ancho (el lockup).
+Ambos se generaron a partir de los originales sobre fondo negro:
+se les quitó el fondo (canal alpha real, sin halo en los bordes) y se recortaron
+al contenido. Por eso se ven limpios sobre cualquier fondo del sitio.
 
-Apenas exista alguno de esos archivos el sitio lo muestra automáticamente.
-No hay que tocar código ni reiniciar nada: se ve al recargar la página.
+PARA REEMPLAZARLOS
+------------------
+Guardar acá un archivo con el mismo nombre. Se aceptan .svg, .png y .webp,
+y el sitio los toma en ese orden de preferencia. Si conseguís el VECTORIAL
+(SVG), guardalo como subsuelo-mark.svg / subsuelo-logo.svg: tiene prioridad
+sobre el PNG y se ve nítido en cualquier tamaño y pantalla.
 
-Si el logo viene en PNG con fondo negro, conviene recortar el fondo antes
-(en el sitio los fondos no siempre son negro puro y se nota el recuadro).
+Requisito: fondo transparente. Un PNG con fondo negro se ve como un recuadro,
+porque los negros del sitio no son todos el mismo negro.
 
 FAVICON
 -------
-app/icon.svg -> ícono de la pestaña del navegador. Reemplazar por el isotipo
-                cuando tengas el vectorial.
+app/icon.png -> ícono de la pestaña, generado desde el isotipo (256x256).

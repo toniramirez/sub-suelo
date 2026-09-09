@@ -63,11 +63,18 @@ Guardar las fotos en `/public` (por ejemplo `/public/fotos/...`) y referenciarla
 
 ## Logo
 
-Guardar el isotipo en `public/brand/subsuelo-mark.svg` (o `.png` con fondo transparente).
-El sitio lo detecta solo y lo muestra en el header y el footer junto al lockup tipográfico.
-Ver `public/brand/LEEME.txt`.
+Ya está cargado:
 
-El favicon está en `app/icon.svg` — reemplazarlo por el isotipo oficial cuando esté el vectorial.
+- `public/brand/subsuelo-mark.png` — isotipo, en el header
+- `public/brand/subsuelo-logo.png` — lockup completo, en el footer
+- `app/icon.png` — favicon, generado desde el isotipo
+
+Se les quitó el fondo negro (alpha real, sin halo) y se recortaron al contenido.
+Para reemplazarlos alcanza con guardar un archivo del mismo nombre; si conseguís el
+vectorial, `subsuelo-mark.svg` / `subsuelo-logo.svg` tienen prioridad sobre el PNG.
+Detalle en `public/brand/LEEME.txt`.
+
+Los originales sobre fondo negro quedaron en `/logo`.
 
 ---
 
@@ -105,7 +112,8 @@ El formulario tiene honeypot anti-spam y validación de campos obligatorios.
 ## Pendientes antes de publicar
 
 - [ ] Reemplazar las fotos placeholder por fotografía real
-- [ ] Cargar el logo en `public/brand/`
+- [x] ~~Cargar el logo en `public/brand/`~~
+- [ ] Conseguir el logo en vectorial (SVG) para nitidez perfecta en retina
 - [ ] **Reemplazar los números de `content/stats.ts`** (hoy son valores de ejemplo)
 - [ ] Completar el número de WhatsApp en `content/site.ts`
 - [ ] Cargar los títulos reales de lanzamientos y sus links de Spotify / YouTube
